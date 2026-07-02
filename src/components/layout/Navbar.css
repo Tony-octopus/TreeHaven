@@ -1,0 +1,224 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(250, 247, 240, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  min-height: 72px;
+}
+
+.navbar__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--forest-800);
+  white-space: nowrap;
+}
+
+.navbar__brand:hover {
+  text-decoration: none;
+}
+
+.navbar__logo {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--sage-100);
+  color: var(--forest-600);
+}
+
+.navbar__nav ul {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar__link {
+  display: inline-block;
+  padding: 0.5rem 0.85rem;
+  border-radius: var(--radius-pill);
+  color: var(--color-text);
+  font-weight: 600;
+  font-size: 0.96rem;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.navbar__link:hover {
+  background: var(--sage-100);
+  color: var(--forest-700);
+  text-decoration: none;
+}
+
+.navbar__link--active {
+  color: var(--forest-700);
+  background: var(--sage-100);
+}
+
+.navbar__search {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+  max-width: 320px;
+  margin-left: auto;
+  padding: 0.5rem 0.9rem;
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border-strong);
+  border-radius: var(--radius-pill);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.navbar__search:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: var(--focus-ring);
+}
+
+.navbar__search-icon {
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+.navbar__search-input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-size: 0.92rem;
+}
+
+.navbar__search-input:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.navbar__cart {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: var(--forest-800);
+  transition: background 0.15s ease;
+}
+
+.navbar__cart:hover {
+  background: var(--sage-100);
+  text-decoration: none;
+}
+
+.navbar__cart-count {
+  position: absolute;
+  top: 4px;
+  right: 2px;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
+  color: #3b2708;
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.navbar__toggle {
+  display: none;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--forest-800);
+}
+
+.navbar__toggle:hover {
+  background: var(--sage-100);
+}
+
+/* Mobile menu panel */
+.navbar__mobile {
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg);
+  padding-block: var(--space-4);
+}
+
+.navbar__mobile-search {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0.9rem;
+  margin-bottom: var(--space-3);
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border-strong);
+  border-radius: var(--radius-pill);
+}
+
+.navbar__mobile-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar__mobile-link {
+  display: block;
+  padding: 0.75rem 0.9rem;
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.navbar__mobile-link:hover,
+.navbar__mobile-link--active {
+  background: var(--sage-100);
+  color: var(--forest-700);
+  text-decoration: none;
+}
+
+/* -------------------------------------------------------------- Responsive */
+@media (max-width: 900px) {
+  .navbar__nav,
+  .navbar__search {
+    display: none;
+  }
+
+  .navbar__toggle {
+    display: grid;
+  }
+
+  .navbar__inner {
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 901px) {
+  .navbar__mobile {
+    display: none;
+  }
+}

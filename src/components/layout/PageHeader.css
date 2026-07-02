@@ -1,0 +1,15 @@
+.page-header {
+  background: linear-gradient(180deg, var(--sage-100) 0%, var(--cream-50) 100%);
+  padding-block: clamp(var(--space-6), 6vw, var(--space-8));
+  border-bottom: 1px solid var(--color-border);
+}
+
+.page-header__title {
+  margin-top: var(--space-2);
+  max-width: 20ch;
+}
+
+.page-header__subtitle {
+  margin-top: var(--space-3);
+  max-width: 60ch;
+}

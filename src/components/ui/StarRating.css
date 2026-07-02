@@ -1,0 +1,24 @@
+.star-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+}
+
+.star-rating__stars {
+  display: inline-flex;
+  color: var(--amber-500);
+}
+
+.star-rating__star {
+  margin-inline-end: 1px;
+}
+
+.star-rating__value {
+  font-weight: 700;
+  color: var(--color-heading);
+}
+
+.star-rating__count {
+  font-size: 0.82rem;
+}
