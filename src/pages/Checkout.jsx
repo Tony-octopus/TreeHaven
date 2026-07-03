@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import FormField from '../components/ui/FormField'
 import OrderSummary from '../components/cart/OrderSummary'
+import CheckoutSteps from '../components/checkout/CheckoutSteps'
 import { LeafLogo, ShieldIcon, ArrowRight } from '../components/ui/Icons'
 import { useCart } from '../context/CartContext'
 import { computeTotals } from '../utils/pricing'
@@ -168,6 +169,7 @@ export default function Checkout() {
   return (
     <div className="checkout">
       <div className="container">
+        <CheckoutSteps current="checkout" />
         <header className="checkout__header">
           <div>
             <span className="eyebrow">Secure checkout</span>

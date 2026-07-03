@@ -78,6 +78,9 @@ export default function Footer() {
               <Link to="/faq">FAQ</Link>
             </li>
             <li>
+              <Link to="/survey">Share feedback</Link>
+            </li>
+            <li>
               <Link to="/shop">Gift cards</Link>
             </li>
           </ul>

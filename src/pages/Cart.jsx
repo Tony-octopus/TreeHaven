@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import ProductImage from '../components/product/ProductImage'
 import OrderSummary from '../components/cart/OrderSummary'
+import CheckoutSteps from '../components/checkout/CheckoutSteps'
 import QuantityStepper from '../components/ui/QuantityStepper'
 import { TrashIcon, ArrowRight, TruckIcon } from '../components/ui/Icons'
 import { useCart } from '../context/CartContext'
@@ -44,6 +45,7 @@ export default function Cart() {
   return (
     <div className="cart">
       <div className="container">
+        <CheckoutSteps current="cart" />
         <header className="cart__header">
           <h1>Your cart</h1>
           <p className="text-muted">{pluralize(itemCount, 'item')}</p>

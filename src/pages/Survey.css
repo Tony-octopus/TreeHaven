@@ -1,0 +1,154 @@
+.survey__container {
+  max-width: 720px;
+}
+
+.survey__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding: clamp(var(--space-5), 4vw, var(--space-6));
+}
+
+.survey__group {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.survey__group:focus {
+  outline: none;
+}
+
+.survey__legend {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-heading);
+  font-family: var(--font-serif);
+  margin-bottom: var(--space-4);
+  padding: 0;
+}
+
+/* ------------------------------------------------------------- Emoji rating */
+.survey__ratings {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.survey__rating {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  flex: 1;
+  min-width: 84px;
+  padding: var(--space-3) var(--space-2);
+  border: 1.5px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  transition: transform 0.12s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.survey__rating:hover {
+  transform: translateY(-2px);
+  border-color: var(--sage-400);
+  background: var(--sage-100);
+}
+
+.survey__rating--active {
+  border-color: var(--forest-600);
+  background: var(--sage-100);
+  box-shadow: var(--focus-ring);
+}
+
+.survey__rating-emoji {
+  font-size: 1.7rem;
+  line-height: 1;
+}
+
+.survey__rating-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-heading);
+}
+
+/* ---------------------------------------------------------------- Options */
+.survey__options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.survey__options--row {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.survey__option {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 0;
+  cursor: pointer;
+  font-size: 0.98rem;
+}
+
+.survey__option input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-primary);
+}
+
+/* ----------------------------------------------------------------- Submit */
+.survey__submit {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.survey__privacy {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+}
+
+/* ------------------------------------------------------------------ Thanks */
+.survey__thanks {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: var(--space-3);
+  padding-block: clamp(var(--space-7), 8vw, var(--space-8));
+  max-width: 620px;
+}
+
+.survey__thanks-icon {
+  display: grid;
+  place-items: center;
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: var(--sage-200);
+  color: var(--forest-700);
+}
+
+.survey__thanks-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  justify-content: center;
+  margin-top: var(--space-3);
+}
+
+@media (max-width: 460px) {
+  .survey__rating {
+    min-width: 64px;
+  }
+
+  .survey__rating-label {
+    font-size: 0.72rem;
+  }
+}

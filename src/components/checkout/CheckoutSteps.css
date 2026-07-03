@@ -1,0 +1,89 @@
+.checkout-steps {
+  margin-bottom: var(--space-5);
+}
+
+.checkout-steps__list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.checkout-steps__step {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+/* Connector line after each step (except the last) */
+.checkout-steps__step:not(:last-child)::after {
+  content: '';
+  flex: 1;
+  min-width: 24px;
+  height: 2px;
+  margin-inline-start: var(--space-2);
+  background: var(--color-border-strong);
+  border-radius: var(--radius-pill);
+}
+
+.checkout-steps__marker {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid var(--color-border-strong);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.checkout-steps__label {
+  font-size: 0.95rem;
+}
+
+/* Completed steps */
+.checkout-steps__step--done {
+  color: var(--forest-700);
+}
+
+.checkout-steps__step--done .checkout-steps__marker {
+  background: var(--forest-600);
+  border-color: var(--forest-600);
+  color: #fff;
+}
+
+.checkout-steps__step--done:not(:last-child)::after {
+  background: var(--forest-500);
+}
+
+/* Current step */
+.checkout-steps__step--current {
+  color: var(--forest-800);
+}
+
+.checkout-steps__step--current .checkout-steps__marker {
+  border-color: var(--forest-600);
+  color: var(--forest-700);
+  box-shadow: 0 0 0 4px var(--sage-100);
+}
+
+@media (max-width: 520px) {
+  .checkout-steps__label {
+    display: none;
+  }
+
+  .checkout-steps__step {
+    flex: 1;
+  }
+
+  .checkout-steps__step:not(:last-child)::after {
+    margin-inline-start: 0;
+  }
+}

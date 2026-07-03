@@ -1,5 +1,6 @@
 import { Link, Navigate, useLocation } from 'react-router-dom'
 import OrderSummary from '../components/cart/OrderSummary'
+import CheckoutSteps from '../components/checkout/CheckoutSteps'
 import { CheckIcon, TruckIcon, MailIcon } from '../components/ui/Icons'
 import './OrderConfirmation.css'
 
@@ -31,6 +32,7 @@ export default function OrderConfirmation() {
   return (
     <div className="confirmation">
       <div className="container">
+        <CheckoutSteps current="confirmation" />
         <div className="confirmation__banner">
           <span className="confirmation__check" aria-hidden="true">
             <CheckIcon size={36} />
@@ -96,6 +98,23 @@ export default function OrderConfirmation() {
               </Link>
               <Link to="/" className="btn btn--secondary btn--lg">
                 Back to home
+              </Link>
+            </div>
+
+            <div className="confirmation__survey card">
+              <div>
+                <h2>How did we do?</h2>
+                <p className="text-muted">
+                  We’d love to hear about your experience — it takes less than a
+                  minute and helps us grow!
+                </p>
+              </div>
+              <Link
+                to="/survey"
+                state={{ fromOrder: true }}
+                className="btn btn--accent"
+              >
+                Share your feedback
               </Link>
             </div>
           </div>

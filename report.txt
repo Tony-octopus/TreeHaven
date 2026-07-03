@@ -1,0 +1,313 @@
+========================================================================
+TreeHaven — E-Commerce High-Fidelity Prototype
+Short Report (Assignment 4)
+========================================================================
+
+NOTE TO SUBMITTER: Items in [SQUARE BRACKETS] are placeholders only I
+could not know (names, student numbers, portfolio/GitHub URLs). Please
+replace them before submitting. Everything else describes the prototype
+that was actually built and is testable by the TA.
+
+
+------------------------------------------------------------------------
+1. DESIGNER
+------------------------------------------------------------------------
+Name:            [Your Full Name]
+Student Number:  [Your Student Number]
+(If working in a pair, add the second member here:)
+Partner Name:    [Partner Full Name]
+Partner Number:  [Partner Student Number]
+
+
+------------------------------------------------------------------------
+2. E-COMMERCE GOAL
+------------------------------------------------------------------------
+(a) Name and type
+    Name: TreeHaven
+    Type: An online plant nursery / garden e-commerce store that sells
+    living trees and plant-care products. The catalogue is organised into
+    five categories: Indoor Trees, Outdoor Trees, Fruit Trees, Bonsai,
+    and Tree Care Supplies. The goal is to let a plant lover browse a
+    curated tree collection, understand each plant's care needs, and
+    complete a simulated purchase quickly and confidently.
+
+(b) Inspiration sites and how they were used
+    (Adjust this list to the sites you actually referenced.)
+
+    - The Sill (thesill.com) — Inspired the calm, editorial product
+      presentation and the idea of surfacing plant-care information
+      (light, water, difficulty) directly on the product page rather
+      than burying it. Also influenced the soft, botanical colour mood.
+
+    - Bloomscape (bloomscape.com) — Inspired the "care level" framing
+      (Easy / Moderate / Advanced) and the friendly, reassuring tone
+      used to make beginners feel confident buying a living plant.
+
+    - Fast Growing Trees (fast-growing-trees.com) — Inspired the
+      faceted-search approach for a tree catalogue (filtering by where
+      the tree lives and by growing conditions) and the "free shipping
+      over a threshold" promotional pattern.
+
+    These sites were used as visual and interaction references only; all
+    branding, copy, illustrations, data, and code in TreeHaven are
+    original to this prototype.
+
+
+------------------------------------------------------------------------
+3. REFLECTION / DESIGN
+------------------------------------------------------------------------
+
+(A) INTERACTIVE PROCESS / SYSTEM IMAGE DESIGN
+
+(a) Follow-instructions process — feedback on progress
+    The purchase flow is Cart -> Checkout -> Confirmation. To always show
+    the user where they are, what is done, and what remains, the design
+    uses TWO complementary indicators:
+
+      1. A macro progress stepper (component: CheckoutSteps) pinned to
+         the top of the Cart, Checkout, and Confirmation pages. Completed
+         steps show a green check mark, the current step is highlighted
+         with a ring, and upcoming steps are muted and numbered. Screen
+         readers receive "completed / current step / not yet started"
+         via visually-hidden text and aria-current="step".
+
+      2. Inside the single-page Checkout, the form is split into clearly
+         numbered sub-sections — (1) Contact, (2) Shipping address,
+         (3) Payment — so the micro-steps within "Checkout" are also
+         explicit. A persistent Order Summary (subtotal, shipping, tax,
+         total) stays visible throughout so the user never loses context,
+         and the final Confirmation page restates the order number,
+         shipping address, and estimated delivery window.
+
+(b) Explore process — faceted-search filters
+    The Shop page implements a functional faceted search. The facets were
+    chosen from a plant buyer's semantic network — the questions a person
+    actually asks when choosing a tree:
+
+      - Category (where/what it is): Indoor, Outdoor, Fruit, Bonsai,
+        Tree Care Supplies.
+      - Care level (can I keep it alive?): Easy, Moderate, Advanced.
+      - Availability: "In stock only".
+      - Free-text search across product name, description, and category.
+      - Sort: Featured, Price (low->high, high->low), Top rated, Name A-Z.
+
+    Filters combine (AND logic), update live, and are stored in the URL
+    query string, so a filtered view is shareable and bookmarkable and
+    survives a page refresh. A live result count ("N products") gives
+    immediate feedback, and an empty state suggests broadening the search.
+
+(c) Communicate process — a non-intrusive, engaging survey
+    The survey (page: /survey) is the communicate process. It is designed
+    to be non-intrusive and engaging:
+
+      - Opt-in, never a pop-up. It is reached by a warm call-to-action on
+        the Order Confirmation page ("How did we do?") and a "Share
+        feedback" link in the footer — the user is invited, not blocked.
+      - Short (under a minute) and low-effort: an emoji rating scale, two
+        quick multiple-choice questions (one about how easy it was to
+        find items, tying back to the faceted search), and one OPTIONAL
+        open comment. Only the overall rating is required.
+      - Reassuring: labelled "Anonymous & secure — no account needed."
+      - Rewarding: submitting shows a cheerful thank-you screen
+        ("You just made our day!") that routes the user back to shopping.
+
+
+(B) VERBAL COMMUNICATION DESIGN
+
+Writer/Reader model
+    The default model is "TreeHaven as a warm, knowledgeable nursery
+    (we) speaking to a plant lover (you)". The brand voice is calm,
+    encouraging, and expert-but-approachable. Consistency is maintained
+    by always addressing the reader in the second person ("your cart",
+    "help your trees flourish") and by keeping a single friendly-expert
+    persona across every page and the shared navbar/footer.
+
+    Local "conversation effects": the tone shifts to a more personal,
+    first-person and exclamatory register at emotional high points — the
+    order Confirmation greets the customer by first name ("Thank you,
+    [Name]!") and the survey speaks intimately and celebrates the user
+    ("We'd love to hear from you!", "You just made our day!"). These
+    localised shifts create warmth without breaking overall consistency.
+
+Three communicative purposes (with examples)
+
+    1. Incite to action (promotional, imperative/exclamatory)
+       - Hero: "Bring the calm of nature into every space" +
+         button "Shop the collection".
+       - CTA banner: "New to plant parenthood?" -> "Shop easy-care trees".
+       - Cart nudge: "You're $X away from free shipping!"
+       - Urgency/promo badges: "Bestseller", "Only 5 left", "New".
+
+    2. Inform (neutral, declarative)
+       - Product care specs: "Light: Bright, indirect light",
+         "Water: When top 2 inches of soil are dry",
+         "Care level: Moderate", "Size: 3-4 ft tall on arrival".
+       - Order summary line items and the FAQ answers (shipping times,
+         thresholds, guarantee terms) use plain, factual sentences.
+
+    3. Engage in a connection (positive, interrogative/exclamatory,
+       inclusive "we/you")
+       - Survey: "How was your shopping experience?",
+         "Would you recommend TreeHaven to a friend?"
+       - Newsletter: "Stay rooted" / "Growing guides and new arrivals,
+         once a month. No spam."
+       - Contact: "We'd love to hear from you."
+
+
+------------------------------------------------------------------------
+4. HIGH-FIDELITY PROTOTYPE
+------------------------------------------------------------------------
+
+(a) Visual design choices
+    - Colour theme: A cohesive natural palette expressed as CSS design
+      tokens — forest greens (primary actions, headings), sage greens
+      (surfaces, highlights), earthy bark browns, and cream/beige
+      neutrals (page background). A single warm amber accent is reserved
+      for promotional CTAs and badges so "buy" moments stand out.
+    - Typography: A serif display face (Iowan/Palatino stack) for
+      headings paired with a clean system sans-serif for body text. The
+      contrast between the two attracts attention to headings and builds
+      a clear type hierarchy (eyebrow label -> H1/H2 -> lede -> body).
+    - Layout & negative space: A constrained max-width container with
+      generous section padding and airy card grids keeps pages calm and
+      scannable and lets the botanical illustrations breathe.
+    - Contrast, scale, balance, hierarchy: Dark forest text on cream
+      gives strong contrast; fluid (clamp) heading sizes create scale;
+      two-column layouts (hero, product detail, checkout) are balanced by
+      a sticky order/summary panel; prices and primary buttons sit high
+      in the visual hierarchy.
+    - Gestalt principles: Similarity (all products use an identical card
+      pattern), proximity (care specs grouped in one tinted panel),
+      continuity (aligned responsive grids), closure (circular icon
+      badges), and common region (cards and panels group related content).
+    - Visual/verbal synergy: The green palette and hand-built botanical
+      SVG product illustrations reinforce the "calm, natural, eco" voice,
+      so what the user sees and what they read tell the same story.
+    - Self-contained SVG artwork means no broken images and no external
+      image requests — the prototype works fully offline.
+
+    Tech: Built with React (Vite), React Router for multi-page
+    navigation, React Context + useReducer for cart state (persisted to
+    localStorage so the cart survives refreshes), and plain CSS driven by
+    design tokens. The project passes lint with 0 warnings/0 errors and
+    builds cleanly.
+
+(b) Portfolio links (prototype is reachable from each portfolio)
+    Portfolio 1: [your portfolio URL]  ->  TreeHaven project link
+    Portfolio 2 (if pair): [partner portfolio URL]
+    Live prototype: [deployed prototype URL, e.g. Netlify/Vercel/GitHub Pages]
+
+
+------------------------------------------------------------------------
+5. CODE
+------------------------------------------------------------------------
+    Group GitHub repository: [https://github.com/your-org/treehaven]
+
+
+------------------------------------------------------------------------
+6. HEURISTIC EVALUATION (Nielsen's 10 usability heuristics)
+------------------------------------------------------------------------
+For each heuristic, an element of TreeHaven that is particularly in line
+with it. (Attach a small screenshot of each referenced element.)
+
+1. Visibility of system status
+   The Cart -> Checkout -> Confirmation progress stepper, the cart-count
+   badge in the navbar, the "Added to cart" confirmation on buttons, the
+   live "N products" count in Shop, and the free-shipping progress bar
+   all keep the user continuously informed of the current state.
+   [Screenshot: checkout progress stepper]
+
+2. Match between the system and the real world
+   Language and icons match the user's world: a leaf logo, a shopping-cart
+   icon, and plant vocabulary such as "Care level", "Light: bright,
+   indirect", "30-day thrive guarantee", plus a Home > Shop > Category >
+   Product breadcrumb that mirrors how people navigate a store.
+   [Screenshot: product care panel]
+
+3. User control and freedom
+   Users can remove a line item, clear the whole cart, adjust quantities,
+   use "Back to cart" on checkout, "Clear all filters" in Shop, and the
+   404 page offers clear exits home. Nothing is a dead end.
+   [Screenshot: cart with remove / clear controls]
+
+4. Consistency and standards
+   A shared design-token system and reusable components (buttons, cards,
+   the Order Summary reused on Cart/Checkout/Confirmation, one navbar and
+   footer sitewide) keep everything consistent; the cart icon sits top-
+   right where users expect it.
+   [Screenshot: navbar + a reused card/button]
+
+5. Error prevention
+   Quantities are clamped to available stock (you cannot exceed it), the
+   Add button is disabled for out-of-stock items, the card-number and
+   MM/YY expiry fields auto-format to prevent malformed input, and the
+   Checkout page redirects to the Cart if there are no items to purchase.
+   [Screenshot: quantity stepper at stock limit / disabled Add]
+
+6. Recognition rather than recall
+   Persistent navigation and breadcrumbs, an always-visible order summary
+   during checkout, a cart that persists across refreshes, "You may also
+   like" related products, and category tiles all let users recognise
+   options instead of remembering them.
+   [Screenshot: checkout with persistent order summary]
+
+7. Flexibility and efficiency of use
+   The faceted search stores state in the URL (shareable/bookmarkable),
+   there is a global search box in the navbar, sort options for power
+   users, one-click "Add" straight from a product card, and autocomplete
+   attributes on checkout fields to speed up form entry.
+   [Screenshot: Shop filters + URL query]
+
+8. Aesthetic and minimalist design
+   A calm palette and generous negative space keep pages focused;
+   progressive disclosure hides complexity until needed — FAQ answers are
+   collapsible, "Billing same as shipping" hides the billing fields, and
+   most survey questions are optional.
+   [Screenshot: FAQ accordion or checkout billing toggle]
+
+9. Help users recognise, diagnose, and recover from errors
+   Forms use inline, human-readable validation messages (e.g. "Enter a
+   valid 5-digit ZIP code", "That card number looks invalid"), mark
+   fields with aria-invalid, and move keyboard focus to the first error
+   so problems are easy to find and fix.
+   [Screenshot: checkout field showing an inline error]
+
+10. Help and documentation
+    A dedicated FAQ page, per-product care instructions, a Contact page,
+    inline field hints, and a helpful demo-payment note on Checkout
+    ("Use test card 4242 4242 4242 4242...") give users the guidance they
+    need without leaving the flow.
+    [Screenshot: FAQ page or checkout demo-payment hint]
+
+
+------------------------------------------------------------------------
+7. GENERATIVE AI ACKNOWLEDGEMENT
+------------------------------------------------------------------------
+(Describe your own usage; the following reflects how this prototype and
+report were produced — edit to match your process.)
+
+Tool used: GitHub Copilot (agent mode, Claude-based model) inside VS Code.
+
+Role in the high-fidelity prototype:
+    Generative AI was used as a pair-programmer to scaffold the React +
+    Vite project: generating component and page structure (navbar, footer,
+    product cards, cart, checkout, survey), the CSS design-token theme,
+    the mock product catalogue, the cart state logic with localStorage
+    persistence, and the faceted-search / form-validation utilities. All
+    output was reviewed, tested in the browser, iterated on, and adjusted
+    by [the/us] as the designer(s); design decisions (branding, palette,
+    copy, facet choices, information architecture) were human-directed,
+    and the code was verified to lint and build cleanly.
+
+Role in the report:
+    Generative AI helped draft and structure this report from notes about
+    the implemented site and the assignment guidelines. The author(s)
+    reviewed every section for accuracy against the actual prototype,
+    corrected details, and filled in personal, portfolio, and evaluation
+    specifics.
+
+No AI-generated content was submitted without human review.
+
+========================================================================
+End of report.
+========================================================================
